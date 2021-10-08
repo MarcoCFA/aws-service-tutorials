@@ -56,7 +56,6 @@ Git aliases create shortcuts for frequently used git commands. Two ways to creat
 
 ## Push
 ````buildoutcfg
-    gpus = "!git push -u origin $(git current-branch)"
-    
-    unpublish = "!git push origin :$(git current-branch)"
+    gpus = git push -u origin HEAD
+
 ````
