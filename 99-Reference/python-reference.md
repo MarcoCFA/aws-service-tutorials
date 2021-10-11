@@ -11,7 +11,7 @@
 [Data Structures](#Data-Structures)
 
 
-# Projects and Packages
+## Projects and Packages
 Lower case naming for scripts, libraries, packages, and modules.
 
 script
@@ -26,7 +26,7 @@ package
 module
 : file.py inside package
 
-## Project and Package Structure
+### Project and Package Structure
 ````
 |- main.py
 |- requirements.txt
@@ -57,7 +57,7 @@ module
 
 ````
 
-# Documentation
+## Documentation
 Python uses `docstrings` to document and comment code. `docstring` has two types of comments:
 
 1. one-line
@@ -92,9 +92,9 @@ sphinx
 
 ```
 
-# Functions
+## Functions
 
-## Function Design Principles
+### Function Design Principles
 1. Naming functions: use lower case and underscores between words
 2. Keep functions short and with a single responsibility
    1. Keep number of arguments < 2 or else further refactor to smaller sub-functions
@@ -113,17 +113,18 @@ sphinx
     x,y,z = [myReadFileFunc(f) for f in filenames]
 ```
 
-## Useful Libraries for documentation
+### Useful Libraries for documentation
 ```buildoutcfg
 
 functools
+collections
 pandas
 
 ```
 
-## Function Parameters, Arguments, and User Input
+### Function Parameters, Arguments, and User Input
 
-### Parameters and Arguments
+#### Parameters and Arguments
 Parameter
 : Variable names used in a function definition. Holds the arguments supplied in the function invocation.
 
@@ -131,7 +132,7 @@ Argument
 : Data supplied to function during invocation
 
 
-### Type of Arugments
+#### Type of Arugments
 1. Default
 2. Required and Optional
 3. Flexible
@@ -163,18 +164,28 @@ Argument
 ```
 
 #### Flexible Arguments
+*args:
+Use as parameter to send `non-keyworded` argument list to a function.
+
 ```buildoutcfg
-    # Default Value
-    def describe_pet(name, animal=None):
-        print(name, animal)
-       
-    # Call Function
-    describe_pet('Lucy')
+   # args example
+   def multiply(*args):
+    z = 1
+    for num in args:
+        z*=num
     
-    # Result
-    'Lucy'
+    return z
 ```
 
+**kwargs:
+Use as parameter to send keyword dictionary as argument list to a function.
+
+```buildoutcfg
+   # kwargs example
+   def print_values(**kwargs):
+    for k,v in kwargs.items():
+        print(f'The value of {k} is {v}')
+```
 
 #### User Input
 The input() function reads input data and returns a string.
@@ -188,7 +199,7 @@ The input() function reads input data and returns a string.
 ```
 
 
-#### Formatting Output
+### Formatting Output
 
 ##### F-Strings
 ```buildoutcfg
@@ -196,7 +207,7 @@ The input() function reads input data and returns a string.
     print(f"my test string with {variable1} and {variable2})
 ```
 
-*Format Specifiers*
+##### Format Specifiers
 
 f
 : floating point
@@ -217,10 +228,7 @@ d
     print("Quantity: %d Total: %10.2f" %(quantity,total))
 ```
 
-
-
-
-## Error Handling
+### Error Handling
 Place code with probable errors in the try block. If code successful, run the else code block.
 ```buildoutcfg
     try:
@@ -231,7 +239,7 @@ Place code with probable errors in the try block. If code successful, run the el
         # code block
 ```
 
-## Lambda
+### Lambda
 Local functions with unlimited arguments with a single expression.
 
 ```buildoutcfg
@@ -241,14 +249,14 @@ Local functions with unlimited arguments with a single expression.
    
 ```
 
-# Data Structures
+## Data Structures
 
-## Lists
+### Lists
 ```buildoutcfg
    bikes = ['trek', 'redline', 'giant']
 ```
 
-### Retrieve Items
+#### Retrieve Items
 ```buildoutcfg
    first = bikes[0]
    last = bikes[-1]
@@ -258,7 +266,7 @@ Local functions with unlimited arguments with a single expression.
    bikes[0] = 'trek-modify'
 ```
 
-### Add, Remove, delete, clear List
+#### Add, Remove, delete, clear List
 ```buildoutcfg
    # Add
    bikes.append('salsa')
@@ -279,12 +287,12 @@ Local functions with unlimited arguments with a single expression.
    bikes.clear()
 ```
 
-### Loop a List
+#### Loop a List
 ```buildoutcfg
     for bike in bikes:
       print(bike)
 ```
-### List Comprehension
+#### List Comprehension
 Creates a new list based on the values of an existing list instead of using a `for` loop.
 
 ```buildoutcfg
@@ -295,16 +303,16 @@ Creates a new list based on the values of an existing list instead of using a `f
     [x for x in list if x condition]
 ```
 
-### Slice a list
+####  Slice a list
 ```buildoutcfg
    first_two = bikes[:2]
 ```
 
-### Copy a list
+#### Copy a list
 ```buildoutcfg
    copy_bikes = bikes[:]
 ```
-### Join two lists
+####  Join two lists
 ```buildoutcfg
    newlist = list1 + list2
    
@@ -312,9 +320,64 @@ Creates a new list based on the values of an existing list instead of using a `f
    newlist.extend(list2)
 ```
 
-## Dictionaries
+### Dictionaries
+Key-value pair data structure.
+
 ```buildoutcfg
-   bikes = ['trek', 'redline', 'giant']
+   bike = {'color': 'green', 'price': 100}
+```
+#### Retrieve Item
+```buildoutcfg
+   get_color = bike['color']
+```
+#### Modify Item
+```buildoutcfg
+   bike['color'] = 'blue'
 ```
 
-# Conditionals
+#### Add key-value pair to dictionary
+```buildoutcfg
+   # add item
+   bike['new_key'] = new_value
+   
+   # add item
+   bike = {'new_key': new_value}
+```
+
+#### Delete key-value pair
+```buildoutcfg
+   del bike['color']
+```
+
+
+#### Loop a dictionary
+```buildoutcfg
+    # loop keys
+    for x in bike.keys():
+        print(x)
+
+
+    # loop values
+    for v in bike.values():
+        print(x)
+```
+
+#### Ordered Dictionary
+Preserves the key-value order when modifying the dictionary.
+```buildoutcfg
+    # import OrdedDict
+    from collections import OrderedDict
+    
+    bikes = OrderedDict()
+```
+
+
+## Conditionals
+```buildoutcfg
+   if condition:
+     # code block
+   elif:
+     # code block
+```
+
+
