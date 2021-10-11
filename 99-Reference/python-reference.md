@@ -1,6 +1,14 @@
 # Python Reference
 
-## Projects and Packages
+[create an anchor](#anchors-in-markdown)
+
+[Projects and Packages](##Projects-and-Packages)
+
+[Documentation](#Documentation)
+
+[Functions](#Functions)
+
+# Projects-and-Packages
 
 script
 : file.py
@@ -45,7 +53,7 @@ module
 
 ````
 
-## Documentation
+# Documentation
 Python uses `docstrings` to document and comment code. `docstring` has two types of comments:
 
 1. one-line
@@ -80,6 +88,8 @@ sphinx
 
 ```
 
+# Functions
+
 ## Function Design Principles
 
 1. Keep functions short and with a single responsibility
@@ -98,6 +108,25 @@ sphinx
 ```buildoutcfg
     x,y,z = [myReadFileFunc(f) for f in filenames]
 ```
+
+
+## Function Parameters, Arguments, and User Input
+
+### Parameters and Arguments
+
+
+### User Input
+The input() function reads input data and returns a string.
+
+```buildoutcfg
+    # Get user input
+    age = input("What is your age?")
+    
+    # Convert input to integer
+    age = int(age)
+```
+
+
 
 
 
