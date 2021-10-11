@@ -113,12 +113,14 @@ sphinx
     x,y,z = [myReadFileFunc(f) for f in filenames]
 ```
 
-### Useful Libraries for documentation
+### Useful Libraries for data processing
 ```buildoutcfg
 
 functools
 collections
 pandas
+random
+datetime
 
 ```
 
@@ -232,11 +234,12 @@ d
 Place code with probable errors in the try block. If code successful, run the else code block.
 ```buildoutcfg
     try:
-        # code block
-    except ErrorType:
-        # Error Message
+        # code block with probable errors
+    except [ErrorType, Exception]:
+        # Error Message or
+        pass # continue running
     else:
-        # code block
+        # code block if no errors
 ```
 
 ### Lambda
@@ -319,6 +322,62 @@ Creates a new list based on the values of an existing list instead of using a `f
    # using exten
    newlist.extend(list2)
 ```
+####  Remove duplicates
+```buildoutcfg
+   # Convert list to a set()
+   set_list = set(bikes)
+```
+
+####  Sort
+```buildoutcfg
+   # ascending
+   bikes.sort(reverse=true)
+   
+   # descending
+   bikes.sort()
+   
+```
+
+#### Count Common Items
+```buildoutcfg
+   from collections import Counter
+   
+   c = Count(bikes)
+   
+   c.most_common(3) # three most common items in bikes
+   
+```
+
+#### Tests for values and emptiness
+```buildoutcfg
+    bikes = ['trek', 'redline', 'giant']
+    
+    # value in list
+    if 'trek' in bikes:
+    
+    # value not in
+    if 'salsa' not in bikes:
+    
+    # list is empty
+    if not bikes:
+        print("list is empty")
+```
+
+####  Summary Stats
+```buildoutcfg
+   # length
+   len(bikes)
+   
+   # sum
+   sum(bikes)
+   
+   # min
+   min(bikes)
+   
+   # max
+   max(bikes)
+
+```
 
 ### Dictionaries
 Key-value pair data structure.
@@ -326,9 +385,16 @@ Key-value pair data structure.
 ```buildoutcfg
    bike = {'color': 'green', 'price': 100}
 ```
-#### Retrieve Item
+#### Retrieve Item, keys, values
 ```buildoutcfg
+    # item value
    get_color = bike['color']
+   
+   # keys
+   keys = bike.keys()
+   
+   # value
+   values = bike.values()
 ```
 #### Modify Item
 ```buildoutcfg
@@ -349,6 +415,16 @@ Key-value pair data structure.
    del bike['color']
 ```
 
+
+#### Min and Max Values
+
+```buildoutcfg
+    # return key with largest value
+    max(bikes, key=bikes.get)
+    
+     # return key with smallest value
+    min(bikes, key=bikes.get)
+```
 
 #### Loop a dictionary
 ```buildoutcfg
@@ -371,6 +447,51 @@ Preserves the key-value order when modifying the dictionary.
     bikes = OrderedDict()
 ```
 
+### Strings
+
+#### String length
+```buildoutcfg    
+   s = 'hello'
+   
+   str_len = len(s)
+```
+
+#### String case
+```buildoutcfg    
+   # upper
+   s.upper()
+   
+   # lower
+   s.lower()
+   
+   # title return capitalized first letter
+   s.title()
+```
+
+#### Substrings
+```buildoutcfg    
+   # string starts with
+   s.startswith('hel')
+   
+   # string ends with
+   s.endwith('lo')
+
+   # replace a substring
+   s.replace('e','z')
+```
+
+#### Split String
+```buildoutcfg    
+   # split string on the character x
+   s.split(x)
+```
+
+#### Fill string
+```buildoutcfg    
+   # left fill string with zeros and make a lenght of 10
+   s.zfill(10)
+```
+
 
 ## Conditionals
 ```buildoutcfg
@@ -378,6 +499,57 @@ Preserves the key-value order when modifying the dictionary.
      # code block
    elif:
      # code block
+   else:
+     # code block
 ```
 
+#### Tests for multiple conditions
+```buildoutcfg    
+    if age > 21 and age < 35:
+
+    if age < 21 or age < 35:
+```
+
+## Files
+
+#### Read file
+```buildoutcfg    
+    
+    # read entire file
+    with open(filename) as f:
+      contents = f.read()
+
+    # read line by line
+    with open(filename) as f:
+      for line in f
+         print(line.rstrip())  
+
+```
+
+#### Write file
+```buildoutcfg    
+    # write single line
+    with open(filename, 'w') as f:
+      f.write('line 1')
+
+    # write multiple lines
+    with open(filename, 'w') as f:
+      f.write('line 1')
+      f.write('line 2')
+```
+
+
+#### Append to file
+```buildoutcfg    
+    # write single line
+    with open(filename, 'a') as f:
+      f.write('line 1')
+
+```
+
+
+#### File Paths
+
+
+#### JSON
 
