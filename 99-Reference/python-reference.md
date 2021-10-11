@@ -504,10 +504,18 @@ Preserves the key-value order when modifying the dictionary.
 ```
 
 #### Tests for multiple conditions
-```buildoutcfg    
+```buildoutcfg
+    # and    
     if age > 21 and age < 35:
-
+    
+    # or
     if age < 21 or age < 35:
+    
+    # not(A and B)
+    if not a or not b:
+
+    # not(A or B)
+    if not a and not b:
 ```
 
 ## Files
@@ -549,7 +557,29 @@ Preserves the key-value order when modifying the dictionary.
 
 
 #### File Paths
+```buildoutcfg    
+   ######## ADD NOTES
 
+```
 
 #### JSON
+```buildoutcfg    
+   import json
+   
+   # read json
+   with open(filename) as j:
+      contents = json.load(j)
 
+   # write json
+   with open(filename, 'w') as j:
+      json.dump(data,j)
+
+```
+
+## Loops
+
+
+### For Loops
+
+
+### While Loops
