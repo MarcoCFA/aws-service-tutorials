@@ -8,10 +8,11 @@
 
 [Functions](#Functions)
 
-[Data Structures](# Data-Structures)
+[Data Structures](#Data-Structures)
 
 
-# Projects-and-Packages
+# Projects and Packages
+Lower case naming for scripts, libraries, packages, and modules.
 
 script
 : file.py
@@ -94,11 +95,11 @@ sphinx
 # Functions
 
 ## Function Design Principles
-
-1. Keep functions short and with a single responsibility
+1. Naming functions: use lower case and underscores between words
+2. Keep functions short and with a single responsibility
    1. Keep number of arguments < 2 or else further refactor to smaller sub-functions
    2. If need more than two parameters: refactor to an object with methods or change the incoming data structure
-2. Avoid repetitive function calls
+3. Avoid repetitive function calls
 ```buildoutcfg
     # Open three files
     
@@ -175,7 +176,7 @@ Argument
 ```
 
 
-### User Input
+#### User Input
 The input() function reads input data and returns a string.
 
 ```buildoutcfg
@@ -187,15 +188,16 @@ The input() function reads input data and returns a string.
 ```
 
 
-## Formatting Function Output
-Can use string formatting for output.
+#### Formatting Output
 
+##### F-Strings
 ```buildoutcfg
     # Print Output where quantity and total are numeric values
-    print("Quantity: %d Total: %10.2f" %(quantity,total))
+    print(f"my test string with {variable1} and {variable2})
 ```
 
-### Format Specifiers
+*Format Specifiers*
+
 f
 : floating point
 
@@ -210,23 +212,33 @@ d
 
 %#
 : field width
+```buildoutcfg
+    # Print Output where quantity and total are numeric values
+    print("Quantity: %d Total: %10.2f" %(quantity,total))
+```
+
+
+
 
 ## Error Handling
-
+Place code with probable errors in the try block. If code successful, run the else code block.
 ```buildoutcfg
     try:
         # code block
-    except:
+    except ErrorType:
         # Error Message
+    else:
+        # code block
 ```
 
 ## Lambda
+Local functions with unlimited arguments with a single expression.
 
 ```buildoutcfg
-    try:
-        # code block
-    except:
-        # Error Message
+   x = lambda args:expression
+   
+   get_sum = lambda num1, num2: num1 + num2
+   
 ```
 
 # Data Structures
@@ -236,7 +248,17 @@ d
    bikes = ['trek', 'redline', 'giant']
 ```
 
-#### Add, Remove, delete, clear List
+### Retrieve Items
+```buildoutcfg
+   first = bikes[0]
+   last = bikes[-1]
+```
+### Modify Item
+```buildoutcfg
+   bikes[0] = 'trek-modify'
+```
+
+### Add, Remove, delete, clear List
 ```buildoutcfg
    # Add
    bikes.append('salsa')
@@ -257,28 +279,42 @@ d
    bikes.clear()
 ```
 
-#### Loop a List
+### Loop a List
 ```buildoutcfg
     for bike in bikes:
       print(bike)
 ```
-#### List Comprehension
+### List Comprehension
 Creates a new list based on the values of an existing list instead of using a `for` loop.
+
 ```buildoutcfg
-   new_list = [x for x in bikes if "t" in x]
+    # Without a condition
+    [x for x in list]
+    
+    # With a condition
+    [x for x in list if x condition]
 ```
 
-#### Slice a list
+### Slice a list
 ```buildoutcfg
    first_two = bikes[:2]
 ```
 
-#### Copy a list
+### Copy a list
 ```buildoutcfg
    copy_bikes = bikes[:]
+```
+### Join two lists
+```buildoutcfg
+   newlist = list1 + list2
+   
+   # using exten
+   newlist.extend(list2)
 ```
 
 ## Dictionaries
 ```buildoutcfg
    bikes = ['trek', 'redline', 'giant']
 ```
+
+# Conditionals
