@@ -8,6 +8,9 @@
 
 [Functions](#Functions)
 
+[Data Structures](# Data-Structures)
+
+
 # Projects-and-Packages
 
 script
@@ -22,7 +25,7 @@ package
 module
 : file.py inside package
 
-### Project and Package Structure
+## Project and Package Structure
 ````
 |- main.py
 |- requirements.txt
@@ -109,10 +112,67 @@ sphinx
     x,y,z = [myReadFileFunc(f) for f in filenames]
 ```
 
+## Useful Libraries for documentation
+```buildoutcfg
+
+functools
+pandas
+
+```
 
 ## Function Parameters, Arguments, and User Input
 
 ### Parameters and Arguments
+Parameter
+: Variable names used in a function definition. Holds the arguments supplied in the function invocation.
+
+Argument
+: Data supplied to function during invocation
+
+
+### Type of Arugments
+1. Default
+2. Required and Optional
+3. Flexible
+
+#### Default Value
+```buildoutcfg
+    # Default Value
+    def describe_pet(name, animal='dog'):
+        print(name, animal)
+       
+    # Call Function
+    describe_pet('Lucy')
+    
+    # Result
+    'Lucy, Dog'
+```
+
+#### Optional Argument using None
+```buildoutcfg
+    # Default Value
+    def describe_pet(name, animal=None):
+        print(name, animal)
+       
+    # Call Function
+    describe_pet('Lucy')
+    
+    # Result
+    'Lucy'
+```
+
+#### Flexible Arguments
+```buildoutcfg
+    # Default Value
+    def describe_pet(name, animal=None):
+        print(name, animal)
+       
+    # Call Function
+    describe_pet('Lucy')
+    
+    # Result
+    'Lucy'
+```
 
 
 ### User Input
@@ -127,6 +187,98 @@ The input() function reads input data and returns a string.
 ```
 
 
+## Formatting Function Output
+Can use string formatting for output.
 
+```buildoutcfg
+    # Print Output where quantity and total are numeric values
+    print("Quantity: %d Total: %10.2f" %(quantity,total))
+```
 
+### Format Specifiers
+f
+: floating point
 
+s
+: string
+
+d
+: integer
+
+%.#f
+: number of decimal places
+
+%#
+: field width
+
+## Error Handling
+
+```buildoutcfg
+    try:
+        # code block
+    except:
+        # Error Message
+```
+
+## Lambda
+
+```buildoutcfg
+    try:
+        # code block
+    except:
+        # Error Message
+```
+
+# Data Structures
+
+## Lists
+```buildoutcfg
+   bikes = ['trek', 'redline', 'giant']
+```
+
+#### Add, Remove, delete, clear List
+```buildoutcfg
+   # Add
+   bikes.append('salsa')
+   
+   # Remove specific item
+   bikes.remove("trek")
+   
+   # Remove specified index
+   bikes.pop(1)
+   
+   # Remove last item
+   bikes.pop()
+   
+   # Delete list
+   del bikes
+   
+   # Clear list
+   bikes.clear()
+```
+
+#### Loop a List
+```buildoutcfg
+    for bike in bikes:
+      print(bike)
+```
+#### List Comprehension
+Creates a new list based on the values of an existing list instead of using a `for` loop.
+```buildoutcfg
+   new_list = [x for x in bikes if "t" in x]
+```
+
+#### Slice a list
+```buildoutcfg
+   first_two = bikes[:2]
+```
+
+#### Copy a list
+```buildoutcfg
+   copy_bikes = bikes[:]
+```
+
+## Dictionaries
+```buildoutcfg
+   bikes = ['trek', 'redline', 'giant']
+```
