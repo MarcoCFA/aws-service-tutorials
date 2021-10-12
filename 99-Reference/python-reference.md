@@ -580,7 +580,40 @@ Preserves the key-value order when modifying the dictionary.
 
 
 ### For Loops
+Use to iterate over a sequence: list, tuple, dictionary, set, or string
 
+```buildoutcfg    
+   
+   fruits = ["apple", "banana", "cherry"]
+   
+   for x in fruits:
+     print(x)
+
+```
+#### Range(start,end,increment) function
+Returns a sequence of numbers, starting from 0 and increments by 1 as teh default. The sequence ends at the specified user input number.
+
+```buildoutcfg    
+   
+   for x in range(6):
+     print(x)
+
+```
+
+#### Continue and Break
+```buildoutcfg   
+ 
+   fruits = ["apple", "banana", "cherry"]
+   
+   for x in fruits:
+      if x == "banana":
+         continue
+      elif x == "apple":
+         break
+      else:
+         print("complete")
+     
+```
 
 ### While Loops
 
@@ -605,3 +638,4 @@ Preserves the key-value order when modifying the dictionary.
       else:
          print(x)
 ```
+
