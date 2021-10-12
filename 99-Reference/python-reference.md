@@ -583,3 +583,25 @@ Preserves the key-value order when modifying the dictionary.
 
 
 ### While Loops
+
+```buildoutcfg    
+   
+   # simple
+   x = 1
+   while x <=5:
+      print(x)
+      x += 1
+
+```
+
+#### Continue and Break
+```buildoutcfg    
+   active = True
+   while active:
+      if x == 1:
+         break
+      elif x in my_list:
+         continue
+      else:
+         print(x)
+```
