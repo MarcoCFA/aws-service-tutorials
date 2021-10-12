@@ -101,16 +101,16 @@ sphinx
    2. If need more than two parameters: refactor to an object with methods or change the incoming data structure
 3. Avoid repetitive function calls
 ```buildoutcfg
-    # Open three files
-    
-    # List of file names
-    file_names = ['f1.txt', `f2.txt`, `f3.txt`]
-    
-    file_list = [myReadFileFunc(f) for f in filenames]
+# Open three files
+
+# List of file names
+file_names = ['f1.txt', `f2.txt`, `f3.txt`]
+
+file_list = [myReadFileFunc(f) for f in filenames]
 ```
 3. Use multiple assignment to unpack variables in data structures
 ```buildoutcfg
-    x,y,z = [myReadFileFunc(f) for f in filenames]
+x,y,z = [myReadFileFunc(f) for f in filenames]
 ```
 
 ### Useful Libraries for data processing
@@ -141,28 +141,28 @@ Argument
 
 #### Default Value
 ```buildoutcfg
-    # Default Value
-    def describe_pet(name, animal='dog'):
-        print(name, animal)
-       
-    # Call Function
-    describe_pet('Lucy')
-    
-    # Result
-    'Lucy, Dog'
+# Default Value
+def describe_pet(name, animal='dog'):
+  print(name, animal)
+ 
+# Call Function
+describe_pet('Lucy')
+
+# Result
+'Lucy, Dog'
 ```
 
 #### Optional Argument using None
 ```buildoutcfg
-    # Default Value
-    def describe_pet(name, animal=None):
-        print(name, animal)
-       
-    # Call Function
-    describe_pet('Lucy')
-    
-    # Result
-    'Lucy'
+# Default Value
+def describe_pet(name, animal=None):
+  print(name, animal)
+ 
+# Call Function
+describe_pet('Lucy')
+
+# Result
+'Lucy'
 ```
 
 #### Flexible Arguments
@@ -170,34 +170,34 @@ Argument
 Use as parameter to send `non-keyworded` argument list to a function.
 
 ```buildoutcfg
-   # args example
-   def multiply(*args):
-    z = 1
-    for num in args:
-        z*=num
-    
-    return z
+# args example
+def multiply(*args):
+ z = 1
+ for num in args:
+     z*=num
+ 
+ return z
 ```
 
 **kwargs:
 Use as parameter to send keyword dictionary as argument list to a function.
 
 ```buildoutcfg
-   # kwargs example
-   def print_values(**kwargs):
-    for k,v in kwargs.items():
-        print(f'The value of {k} is {v}')
+# kwargs example
+def print_values(**kwargs):
+ for k,v in kwargs.items():
+     print(f'The value of {k} is {v}')
 ```
 
 #### User Input
 The input() function reads input data and returns a string.
 
 ```buildoutcfg
-    # Get user input
-    age = input("What is your age?")
-    
-    # Convert input to integer
-    age = int(age)
+# Get user input
+age = input("What is your age?")
+
+# Convert input to integer
+age = int(age)
 ```
 
 
@@ -205,8 +205,8 @@ The input() function reads input data and returns a string.
 
 ##### F-Strings
 ```buildoutcfg
-    # Print Output where quantity and total are numeric values
-    print(f"my test string with {variable1} and {variable2})
+# Print Output where quantity and total are numeric values
+print(f"my test string with {variable1} and {variable2})
 ```
 
 ##### Format Specifiers
@@ -226,20 +226,20 @@ d
 %#
 : field width
 ```buildoutcfg
-    # Print Output where quantity and total are numeric values
-    print("Quantity: %d Total: %10.2f" %(quantity,total))
+# Print Output where quantity and total are numeric values
+print("Quantity: %d Total: %10.2f" %(quantity,total))
 ```
 
 ### Error Handling
 Place code with probable errors in the try block. If code successful, run the else code block.
 ```buildoutcfg
-    try:
-        # code block with probable errors
-    except [ErrorType, Exception]:
-        # Error Message or
-        pass # continue running
-    else:
-        # code block if no errors
+try:
+  # code block with probable errors
+except [ErrorType, Exception]:
+  # Error Message or
+  pass # continue running
+else:
+  # code block if no errors
 ```
 
 ### Lambda
@@ -251,131 +251,198 @@ Local functions with unlimited arguments with a single expression.
    get_sum = lambda num1, num2: num1 + num2
    
 ```
+### Decorators
+Modifies a function to accept another function as an argument. Common to keep decorators in their own module.
+
+```buildoutcfg
+def do_twice(func):
+    def wrapper_do_twice():
+        func()
+        func()
+    return wrapper_do_twice
+       
+```
+
+```buildoutcfg
+from decorators import do_twice
+
+@do_twice
+ def say_whee():
+     print("Whee!")
+   
+```
+#### Use Cases
+1. Type checking parameters in function arguments
+```buildoutcfg
+@accepts(uint, utf8string)
+def myMethod(ID, name):
+   pass
+   
+```
+2. Logging different parts of an application.
+
+### Built-in decorators
+1. staticmethod: returns a static method for a given function. it takes a single function as a paratemeter and converts it to a static method.
+   1. Adding a utility function to a class
+   2. Preventing override of a method in a child class
+2. property: returns a property object. Used for getters and setters in OOP. `property(fget=None, fset=None, fdel=None, doc=None)`
+```buildoutcfg
+# Using @property decorator
+class Celsius:
+    def __init__(self, temperature=0):
+        self.temperature = temperature
+
+    def to_fahrenheit(self):
+        return (self.temperature * 1.8) + 32
+
+    @property
+    def temperature(self):
+        print("Getting value...")
+        return self._temperature
+
+    @temperature.setter
+    def temperature(self, value):
+        print("Setting value...")
+        if value < -273.15:
+            raise ValueError("Temperature below -273 is not possible")
+        self._temperature = value
+
+
+# create an object
+human = Celsius(37)
+
+print(human.temperature)
+
+print(human.to_fahrenheit())
+
+coldest_thing = Celsius(-300)
+   
+```
 
 ## Data Structures
 
 ### Lists
 ```buildoutcfg
-   bikes = ['trek', 'redline', 'giant']
+bikes = ['trek', 'redline', 'giant']
 ```
 
 #### Retrieve Items
 ```buildoutcfg
-   first = bikes[0]
-   last = bikes[-1]
+first = bikes[0]
+last = bikes[-1]
 ```
 ### Modify Item
 ```buildoutcfg
-   bikes[0] = 'trek-modify'
+bikes[0] = 'trek-modify'
 ```
 
 #### Add, Remove, delete, clear List
 ```buildoutcfg
-   # Add
-   bikes.append('salsa')
-   
-   # Remove specific item
-   bikes.remove("trek")
-   
-   # Remove specified index
-   bikes.pop(1)
-   
-   # Remove last item
-   bikes.pop()
-   
-   # Delete list
-   del bikes
-   
-   # Clear list
-   bikes.clear()
+# Add
+bikes.append('salsa')
+
+# Remove specific item
+bikes.remove("trek")
+
+# Remove specified index
+bikes.pop(1)
+
+# Remove last item
+bikes.pop()
+
+# Delete list
+del bikes
+
+# Clear list
+bikes.clear()
 ```
 
 #### Loop a List
 ```buildoutcfg
-    for bike in bikes:
-      print(bike)
+for bike in bikes:
+    print(bike)
 ```
 #### List Comprehension
 Creates a new list based on the values of an existing list instead of using a `for` loop.
 
 ```buildoutcfg
-    # Without a condition
-    [x for x in list]
-    
-    # With a condition
-    [x for x in list if x condition]
+# Without a condition
+[x for x in list]
+
+# With a condition
+[x for x in list if x condition]
 ```
 
 ####  Slice a list
 ```buildoutcfg
-   first_two = bikes[:2]
+first_two = bikes[:2]
 ```
 
 #### Copy a list
 ```buildoutcfg
-   copy_bikes = bikes[:]
+copy_bikes = bikes[:]
 ```
 ####  Join two lists
 ```buildoutcfg
-   newlist = list1 + list2
-   
-   # using exten
-   newlist.extend(list2)
+newlist = list1 + list2
+
+# using exten
+newlist.extend(list2)
 ```
 ####  Remove duplicates
 ```buildoutcfg
-   # Convert list to a set()
-   set_list = set(bikes)
+# Convert list to a set()
+set_list = set(bikes)
 ```
 
 ####  Sort
 ```buildoutcfg
-   # ascending
-   bikes.sort(reverse=true)
-   
-   # descending
-   bikes.sort()
+# ascending
+bikes.sort(reverse=true)
+
+# descending
+bikes.sort()
    
 ```
 
 #### Count Common Items
 ```buildoutcfg
-   from collections import Counter
-   
-   c = Count(bikes)
-   
-   c.most_common(3) # three most common items in bikes
+from collections import Counter
+
+c = Count(bikes)
+
+c.most_common(3) # three most common items in bikes
    
 ```
 
 #### Tests for values and emptiness
 ```buildoutcfg
-    bikes = ['trek', 'redline', 'giant']
-    
-    # value in list
-    if 'trek' in bikes:
-    
-    # value not in
-    if 'salsa' not in bikes:
-    
-    # list is empty
-    if not bikes:
-        print("list is empty")
+bikes = ['trek', 'redline', 'giant']
+
+# value in list
+if 'trek' in bikes:
+
+# value not in
+if 'salsa' not in bikes:
+
+# list is empty
+if not bikes:
+  print("list is empty")
 ```
 
 ####  Summary Stats
 ```buildoutcfg
-   # length
-   len(bikes)
-   
-   # sum
-   sum(bikes)
-   
-   # min
-   min(bikes)
-   
-   # max
-   max(bikes)
+# length
+len(bikes)
+
+# sum
+sum(bikes)
+
+# min
+min(bikes)
+
+# max
+max(bikes)
 
 ```
 
@@ -383,101 +450,101 @@ Creates a new list based on the values of an existing list instead of using a `f
 Key-value pair data structure.
 
 ```buildoutcfg
-   bike = {'color': 'green', 'price': 100}
+bike = {'color': 'green', 'price': 100}
 ```
 #### Retrieve Item, keys, values
 ```buildoutcfg
-    # item value
-   get_color = bike['color']
-   
-   # keys
-   keys = bike.keys()
-   
-   # value
-   values = bike.values()
+# item value
+get_color = bike['color']
+
+# keys
+keys = bike.keys()
+
+# value
+values = bike.values()
 ```
 #### Modify Item
 ```buildoutcfg
-   bike['color'] = 'blue'
+bike['color'] = 'blue'
 ```
 
 #### Add key-value pair to dictionary
 ```buildoutcfg
-   # add item
-   bike['new_key'] = new_value
-   
-   # add item
-   bike = {'new_key': new_value}
+# add item
+bike['new_key'] = new_value
+
+# add item
+bike = {'new_key': new_value}
 ```
 
 #### Delete key-value pair
 ```buildoutcfg
-   del bike['color']
+del bike['color']
 ```
 
 
 #### Min and Max Values
 
 ```buildoutcfg
-    # return key with largest value
-    max(bikes, key=bikes.get)
-    
-     # return key with smallest value
-    min(bikes, key=bikes.get)
+# return key with largest value
+max(bikes, key=bikes.get)
+
+# return key with smallest value
+min(bikes, key=bikes.get)
 ```
 
 #### Loop a dictionary
 ```buildoutcfg
-    # loop keys
-    for x in bike.keys():
-        print(x)
+# loop keys
+for x in bike.keys():
+  print(x)
 
 
-    # loop values
-    for v in bike.values():
-        print(x)
+# loop values
+for v in bike.values():
+  print(x)
 ```
 
 #### Ordered Dictionary
 Preserves the key-value order when modifying the dictionary.
 ```buildoutcfg
-    # import OrdedDict
-    from collections import OrderedDict
-    
-    bikes = OrderedDict()
+# import OrdedDict
+from collections import OrderedDict
+
+bikes = OrderedDict()
 ```
 
 ### Strings
 
 #### String length
-```buildoutcfg    
-   s = 'hello'
-   
-   str_len = len(s)
+```buildoutcfg
+s = 'hello'
+
+str_len = len(s)
 ```
 
 #### String case
-```buildoutcfg    
-   # upper
-   s.upper()
-   
-   # lower
-   s.lower()
-   
-   # title return capitalized first letter
-   s.title()
+```buildoutcfg  
+# upper
+s.upper()
+
+# lower
+s.lower()
+
+# title return capitalized first letter
+s.title()
 ```
 
 #### Substrings
-```buildoutcfg    
-   # string starts with
-   s.startswith('hel')
-   
-   # string ends with
-   s.endwith('lo')
+```buildoutcfg 
+# string starts with
+s.startswith('hel')
 
-   # replace a substring
-   s.replace('e','z')
+# string ends with
+s.endwith('lo')
+
+# replace a substring
+s.replace('e','z')
 ```
 
 #### Split String
@@ -828,3 +895,62 @@ Allows classes to work together to model complex situations.
       def bark(self):
          print("Beagle is barking")
 ```
+
+## Data Class
+Abstraction of a python class. Eliminates redundant code and provides out-of-the-box functionality: `__repr__` and `__eq__`
+
+### Basic Data Class
+```buildoutcfg    
+   from dataclasses import dataclass
+
+   @dataclass
+   class DataClassCard:
+      rank: str
+      suit: str
+```
+
+### Default Values and Type Hints
+Type hints required for each attribute or else the attribute is not included in the class.
+
+```buildoutcfg    
+   from dataclasses import dataclass
+
+   # Default Values
+   @dataclass
+   class DataClassCard:
+      rank: str = '1'
+      suit: str = 'Q'
+```
+
+### Methods
+```buildoutcfg    
+   from dataclasses import dataclass
+
+   @dataclass
+   class DataClassCard:
+      rank: str = '1'
+      suit: str = 'Q'
+   
+   def flip_card(self,value):
+      if self.rank > 5:
+         print('flip card')
+```
+
+### Inheritance
+Child classes must have default values if the parent class has default values.
+```buildoutcfg    
+   from dataclasses import dataclass
+   
+   # Parent Class
+   @dataclass
+   class DataClassCard:
+      rank: str = '1'
+      suit: str = 'Q'
+   
+
+   # Child Class
+   @dataclass
+   class ChildClass(DataClassCard):
+      order: int = 10
+```
+
