@@ -639,3 +639,192 @@ Returns a sequence of numbers, starting from 0 and increments by 1 as teh defaul
          print(x)
 ```
 
+## Classes
+Classes the foundation of OOP and provide a blueprint for the properties and methods of an object.
+
+### Concepts
+Object(instance):
+distinct instance of a class with self-contained data and methods.
+
+Method:
+function of a class and takes `self` as the first parameter
+
+Constructor:
+Defines the class attributes and invoked on object creation.
+
+Attribute:
+Property of an object.
+
+Encapsulation:
+Hides the class implementation from the user.
+
+Inheritance:
+Extends a class to a new class. The new class inherits all the properties and methods of the parent class.
+
+Composition:
+Uses multiple classes to create a new class.
+
+Polymorphism:
+Provides an interface for different classes to use an object.
+
+### Class Components
+Class Variable:
+Belong to the class, not the object. Declared before the constructor or any methods. Used for increment/decrement as well as constant variables.
+
+Class Method:
+Used with the class instead of the object instance.
+
+Instance Variables:
+Defined at the object level.
+
+Methods:
+Defined at the object level.
+
+Public Methods:
+Defined at the object level and the method available to the interface.
+
+```buildoutcfg    
+   def public_method(self):
+      print(self.x)
+```
+
+Private Methods:
+Defined at the object level and the method `NOT AVAILABLE` to the interface. Called automatically.
+
+```buildoutcfg    
+   def _private_method(self, val):
+      return val - self.x
+```
+
+#### Creating a Class
+```buildoutcfg  
+   # class module
+     
+   class Car():
+   
+   # constructor
+   def __init__(self, make, model, year):
+      self.make = make
+      self.model = model
+      self.year = year
+      fuel_level = 0
+      fuel_capacity = 15
+   
+   def fill_tank(self):
+      self.fuel_level = self.fuel_capacity
+   
+   def drive(self):
+      print('Car is moving')
+      
+```
+
+```buildoutcfg    
+   # object creation
+   
+   my_car = Car('audi', 'a4', 2016)
+```
+#### Accessing methods, attribute values, and modifying attributes
+```buildoutcfg    
+   # Access attributes
+   
+   make = my_car.make
+   model = my_car.model
+   
+```
+
+```buildoutcfg    
+   # Call methods
+   
+   my_car.fill_tank()
+   my_car.drive()
+   
+```
+
+```buildoutcfg    
+   # Modify Attribute
+   
+   my_car.fuel_level = 10
+   
+```
+
+
+#### Patterns for Object Data
+```buildoutcfg    
+   # Running Total
+   
+   def addItem(self,x):
+      self.total += x
+```
+
+```buildoutcfg    
+   # Counting Events
+   
+   def countItem(self,x):
+      self.count += 1
+```
+
+```buildoutcfg    
+   # Collecting values
+   
+   def collectItem(self,x):
+      self.items.append(x)
+```
+
+#### Instances as attributes
+Allows classes to work together to model complex situations.
+
+```buildoutcfg    
+   # Class Battery():
+   """ Battery for Car""
+   
+   def __init__(self,size=70):
+      self.size = size
+      self.charge_level = 0
+   
+   def get_range(self):
+      if self.size == 70:
+         return 240
+      elif self.size == 85:
+         return 270
+```
+
+```buildoutcfg    
+   # Class ElectricCar(Car):
+   
+   def __init__(self,make, model, year):
+      self.battery = Battery() # Use battery object
+
+```
+
+```buildoutcfg    
+   # Use the instance
+   
+   my_car.battery.get_range()
+
+```
+
+#### Inheritance
+
+```buildoutcfg    
+   # Parent Class
+
+   class Dog():
+   
+      def __init__(self,name):
+         self.name = name
+      
+      def sit(self):
+         print(self.name + " is sitting.")
+```
+
+```buildoutcfg    
+   # Child Class
+
+   class Beagle():
+   
+      def __init__(self,name):
+         super().__init__(name)
+      
+      def bark(self):
+         print("Beagle is barking")
+```
