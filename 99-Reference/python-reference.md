@@ -939,18 +939,59 @@ Type hints required for each attribute or else the attribute is not included in 
 ### Inheritance
 Child classes must have default values if the parent class has default values.
 ```buildoutcfg    
-   from dataclasses import dataclass
-   
-   # Parent Class
-   @dataclass
-   class DataClassCard:
-      rank: str = '1'
-      suit: str = 'Q'
-   
+from dataclasses import dataclass
 
-   # Child Class
-   @dataclass
-   class ChildClass(DataClassCard):
-      order: int = 10
+# Parent Class
+@dataclass
+class DataClassCard:
+   rank: str = '1'
+   suit: str = 'Q'
+
+
+# Child Class
+@dataclass
+class ChildClass(DataClassCard):
+   order: int = 10
 ```
+
+## Testing
+unit test:
+verifies a specific aspect of code works as expected.
+
+test case:
+collection of unit tests.
+
+
+### Process
+1. Create a module with test_ as suffix
+2. Make a class, with test_ suffix, to inherit the test package unittest or pytest
+3. Write methods in the class with test_suffix
+4. Run tests
+
+### Assert Statements
+syntax:
+`assert boolean_expression, message`
+
+Unit tests can have more than one unit test. All or none unit tests results.
+
+
+```buildoutcfg  
+   # Example assert statement  
+   def test_method():
+      test_val = 2
+      expected = 100
+      actual = import_function(test_val)
+      msg = 'expected {0}, actual {1}'.format(expected, actual)
+      
+      assert actual == expected
+      
+```
+
+
+### Continuous Integration and Code Coverage
+1. tox
+2. travis ci
+3. 
+
+
 
